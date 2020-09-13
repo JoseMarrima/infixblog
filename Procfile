@@ -1,0 +1,1 @@
+web: gunicorn infixblog.wsgi --blog-file -

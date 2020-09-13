@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Blog - Brand</title>
+    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="{% static '/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/Features-Clean.css' %}">
+    <link rel="stylesheet" href="{% static '/css/Footer-Basic.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="{% static '/css/Projects-Clean.css' %}">
+    <link rel="stylesheet" href="{% static '/css/Projects-Horizontal.css' %}">
+    <link rel="stylesheet" href="{% static '/css/smoothproducts.css' %}">
+    <link rel="stylesheet" href="{% static '/css/Team-Clean.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" style="padding: 0px 0px;margin: 0px;"><img class="img-thumbnail" src="{% static '/img/Infix%20Studios%20transparent.png' %}" width="100px" style="padding: 0px;border-style: none;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="{% url 'index' %}">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'posts' %}">Blog</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <main class="page blog-post-list">
+        <section class="clean-block clean-blog-list dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Welcome to our Blog</h2>
+                    <p>Read articles related to Android Development, Data Structures and Algorithms, Spring Boot, and others interesting topics.</p>
+                </div>
+                <div class="block-content">
+                    {% for post in post_list %}
+                    <div class="clean-blog-post">
+                        <div class="row">
+                            <div class="col-lg-5"><img class="rounded img-fluid" src="{{ post.image.url }}"></div>
+                            <div class="col-lg-7">
+                                <h3>{{ post.title }}</h3>
+                                <div class="info"><span> Posted by: {{ post.author }}</span></div>
+                                <p>
+                                    {{post.content | safe | truncatechars_html:200 }}
+                                </p>
+                                <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+                            <div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="footer-basic" style="background-color: rgb(0,0,0);">
+        <footer>
+            <div class="social"><a href="#"><i class="icon ion-social-github"></i></a><a href="#"><i class="fab fa-medium"></i></a><a href="#"><i class="icon ion-android-playstore"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Blog</a></li>
+                <li class="list-inline-item"><a href="#">Contact us</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">Infix Studios © 2020</p>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="{% static '/js/smoothproducts.min.js' %}"></script>
+    <script src="{% static '/js/theme.js' %}"></script>
+</body>
+
+</html>
