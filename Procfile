@@ -1,1 +1,1 @@
-web: gunicorn infixblog.wsgi --blog-file -
+web: gunicorn infixstudios:app --blog-file -
